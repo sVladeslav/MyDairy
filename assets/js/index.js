@@ -1,6 +1,68 @@
 'use strict';
 
 
+// ООП в JS . Белисимо. Классы. (которых нет)
+
+
+function FunctionAnimal(name){
+    this.name = name;
+}
+
+function FCat(){
+
+}
+
+FCat.prototype = new FunctionAnimal();
+
+class Animal{
+    constructor(name){
+        this.name = name;
+    }
+
+    getVoice(){
+        console.log(this.voice);
+    }
+};
+
+
+class Cat extends Animal{
+    constructor(name, voice){
+        super(name); //вызов родительского конструктора
+        this.voice = voice;
+    }
+
+    voice(){
+
+    }
+}
+
+
+const fCat = new FCat();
+const animal = new Animal("chepushilo");
+const cat = new Cat("Murzik", "Mew-mew");
+
+
+//палиндром функция
+
+/*let str1 = "а роза упала на лапу, Азора.";
+
+
+
+    function checkPalindrom(str){
+    str = str.toLowerCase().replace(/[^а-яa-z]|\s/gi,"");
+
+    let str2 = str.split("").reverse().join("");
+
+    if (str === str2) {
+        return true;
+    }
+    return false;
+    }
+
+
+console.log(checkPalindrom(str1));
+
+    */
 
 // замыкание и лексическое окружение.
 /*
