@@ -1,6 +1,95 @@
 'use strict';
 
 
+
+/*Деструктуризация
+*
+*
+* теперь есть такие переменные как test1 , test2, test4
+* */
+
+
+const testArr = ["FirstValue", "SecondValue", "ThirdValue", "FourthValue"];
+
+const [test1, test2, , test4] = testArr;
+
+const [test11, test22, , test44] = ["FirstValue", "SecondValue", "ThirdValue", "FourthValue"];
+
+const [test111, test222,  ...test444] = ["FirstValue", "SecondValue", "ThirdValue", "FourthValue"];
+//в test444 придет весь оставшийся массив
+
+
+const result = [...testArr, ...testArr];
+//будет склейка двух массивов
+
+const result2 = [ ...(new Set( [ ...testArr, ...testArr ])) ];
+//получит массив с уникальными значениями из двух массивов
+
+
+const sum = (a,b,...rest) =>{
+    console.log(rest);
+}
+
+function sum2(a,b){
+    console.log(arguments); // НООООО !!!! в аргументы попадут все значения включая a,b
+                            // console.log([...arguments]); в первом случае
+                            // это были обьекты итерируемые, а в данном
+                            // случае преобразируем в массив
+}
+
+const obj = {
+    name: "Test",
+    surname: "Testovich",
+    age: 18,
+    isMale: true,
+    car: {
+        engine:{
+            volume: 2.0,
+        },
+        doorCount: 5,
+    },
+}
+
+let {surname : myPerfectNameOfVariable, age} = obj;
+// первое свойство переименуеться , а второе будет age. но и то
+    // и другое это просто переменные
+
+let { car: { engine : { volume: userCarEngineVolume }} , name : userName} = obj;
+
+
+
+
+
+const user = {
+    id: 21,
+    role: "USER",
+
+    email: "useremail@gmail.com",
+    firstName: "Name",
+
+};
+
+
+const checkPermission = (req,res, next) => {
+    const {user: {id: userId, role: userRole}} = req;
+
+    userId;
+    userRole;
+};
+
+const reqObj = {} ;
+reqObj.user = user;
+
+function logUserFullName(user){
+    console.log(`${user.name} ${user.surname}` );
+}
+
+function logUserFullName2({name, surname, ...rest}){ //расчленит юзера и сразу его по переменным
+
+    console.log(`${name} ${surname}` );
+}
+
+
 // ООП в JS . Белисимо. Классы. (которых нет)
 
 
